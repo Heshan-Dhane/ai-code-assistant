@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CodeMind — AI Code Assistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-icon">⚡</div>
+      Jasmin AI Assistant
+    </div>
+    <div class="status-pill">
+      <div class="dot"></div>
+      Jasmin AI Assist
+    </div>
+    <button class="clear-btn" id="clearHistoryBtn">Clear History</button>
+  </div>
+
+  <!-- Main Workspace -->
+  <div class="workspace">
+
+    <!-- Sidebar: Chat History -->
+    <div class="chat-panel">
+      <div class="panel-header"><span>◈</span> Session History</div>
+      <div class="history-list" id="historyList">
+        <div class="empty-history" id="emptyHistory">
+          <span>🗂</span>
+          No analyses yet.<br/>Paste code and hit Analyze.
+        </div>
+      </div>
+    </div>
+
+    <!-- Editor Panel -->
+    <div class="editor-panel">
+
+      <!-- Mode Tabs -->
+      <div class="mode-bar">
+        <button class="mode-tab active" data-mode="review">Review</button>
+        <button class="mode-tab" data-mode="debug">Debug</button>
+        <button class="mode-tab" data-mode="explain">Explain</button>
+        <button class="mode-tab" data-mode="optimize">Optimize</button>
+        <button class="mode-tab" data-mode="security">Security</button>
+        <button class="mode-tab" data-mode="refactor">Refactor</button>
+      </div>
+
+      <!-- Scrollable Content -->
+      <div class="editor-wrap" id="editorWrap">
+
+        <!-- Code Editor Block -->
+        <div class="code-block">
+          <div class="code-block-header">
+            <div class="code-block-title">
+              <div class="traffic">
+                <span class="r"></span>
+                <span class="y"></span>
+                <span class="g"></span>
+              </div>
+              code_input
+            </div>
+            <select class="lang-select" id="langSelect">
+              <option value="auto">auto-detect</option>
+              <option value="javascript">JavaScript</option>
+              <option value="typescript">TypeScript</option>
+              <option value="python">Python</option>
+              <option value="java">Java</option>
+              <option value="cpp">C++</option>
+              <option value="c">C</option>
+              <option value="rust">Rust</option>
+              <option value="go">Go</option>
+              <option value="php">PHP</option>
+              <option value="ruby">Ruby</option>
+              <option value="swift">Swift</option>
+              <option value="kotlin">Kotlin</option>
+              <option value="sql">SQL</option>
+              <option value="html">HTML</option>
+              <option value="css">CSS</option>
+              <option value="bash">Bash</option>
+            </select>
+          </div>
+
+          <textarea
+            class="code-textarea"
+            id="codeInput"
+            placeholder="// Paste your code here...&#10;&#10;function example(data) {&#10;  return data.map(x => x * 2)&#10;}"
+            spellcheck="false"
+            autocorrect="off"
+            autocapitalize="off"
+          ></textarea>
+
+          <div class="editor-footer">
+            <span class="line-count" id="lineCount">0 lines · 0 chars</span>
+            <span class="hint-text">Ctrl+Enter to analyze</span>
+            <button class="analyze-btn" id="analyzeBtn">
+              <span class="spinner"></span>
+              <span class="btn-icon">▶</span>
+              <span id="btnText">Analyze</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Error Panel -->
+        <div class="error-panel" id="errorPanel">
+          <div class="error-header">
+            <span>✖</span>
+            <span id="errorType" class="error-type">ERROR</span>
+            Analysis Failed
+          </div>
+          <div class="error-message" id="errorMsg"></div>
+          <div class="error-hint" id="errorHint"></div>
+        </div>
+
+        <!-- Response injected here by JS -->
+        <div id="responseArea"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
