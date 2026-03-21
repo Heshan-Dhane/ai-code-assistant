@@ -15,8 +15,8 @@
    ════════════════════════════════════════════════════════ */
 
 const CONFIG = {
-  API_KEY:  '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',   // ← paste your key here
-  MODEL:    'stepfun/step-3.5-flash:free',                 // ← paste your model here
+  API_KEY:  '',   // ← paste your key here
+  MODEL:    '',                 // ← paste your model here
   ENDPOINT: 'https://openrouter.ai/api/v1/chat/completions',
 };
 
